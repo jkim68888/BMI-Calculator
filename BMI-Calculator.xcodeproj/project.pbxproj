@@ -14,6 +14,8 @@
 		9A1EB6DF29347BB500C1CB2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A1EB6DE29347BB500C1CB2E /* Assets.xcassets */; };
 		9A1EB6E229347BB500C1CB2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A1EB6E029347BB500C1CB2E /* LaunchScreen.storyboard */; };
 		9AB520D0293496A800E45E1B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB520CF293496A800E45E1B /* SecondViewController.swift */; };
+		9ACEC5662935DFAE00DF5FF7 /* BmiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEC5652935DFAE00DF5FF7 /* BmiManager.swift */; };
+		9ACEC5682936051400DF5FF7 /* Bmi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEC5672936051400DF5FF7 /* Bmi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		9A1EB6E129347BB500C1CB2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A1EB6E329347BB500C1CB2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AB520CF293496A800E45E1B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		9ACEC5652935DFAE00DF5FF7 /* BmiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiManager.swift; sourceTree = "<group>"; };
+		9ACEC5672936051400DF5FF7 /* Bmi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bmi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +64,40 @@
 			children = (
 				9A1EB6D529347BB300C1CB2E /* AppDelegate.swift */,
 				9A1EB6D729347BB300C1CB2E /* SceneDelegate.swift */,
-				9AB520CF293496A800E45E1B /* SecondViewController.swift */,
-				9A1EB6D929347BB300C1CB2E /* ViewController.swift */,
-				9A1EB6DB29347BB300C1CB2E /* Main.storyboard */,
+				9AB520D12935DD7200E45E1B /* Models */,
+				9AB520D22935DD8000E45E1B /* Views */,
+				9AB520D32935DD8500E45E1B /* Controllers */,
 				9A1EB6DE29347BB500C1CB2E /* Assets.xcassets */,
 				9A1EB6E029347BB500C1CB2E /* LaunchScreen.storyboard */,
 				9A1EB6E329347BB500C1CB2E /* Info.plist */,
 			);
 			path = "BMI-Calculator";
+			sourceTree = "<group>";
+		};
+		9AB520D12935DD7200E45E1B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9ACEC5652935DFAE00DF5FF7 /* BmiManager.swift */,
+				9ACEC5672936051400DF5FF7 /* Bmi.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9AB520D22935DD8000E45E1B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9A1EB6DB29347BB300C1CB2E /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9AB520D32935DD8500E45E1B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9AB520CF293496A800E45E1B /* SecondViewController.swift */,
+				9A1EB6D929347BB300C1CB2E /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,8 +171,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ACEC5682936051400DF5FF7 /* Bmi.swift in Sources */,
 				9AB520D0293496A800E45E1B /* SecondViewController.swift in Sources */,
 				9A1EB6DA29347BB300C1CB2E /* ViewController.swift in Sources */,
+				9ACEC5662935DFAE00DF5FF7 /* BmiManager.swift in Sources */,
 				9A1EB6D629347BB300C1CB2E /* AppDelegate.swift in Sources */,
 				9A1EB6D829347BB300C1CB2E /* SceneDelegate.swift in Sources */,
 			);

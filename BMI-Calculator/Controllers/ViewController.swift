@@ -14,8 +14,7 @@ class ViewController: UIViewController {
 	@IBOutlet weak var weightTextField: UITextField!
 	@IBOutlet weak var calculateButton: UIButton!
 	
-	var bmiNumber: Double?
-	var backgroundColor: UIColor?
+	var bmiManager = BmiManager()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -38,55 +37,7 @@ class ViewController: UIViewController {
 
 	@IBAction func calculateButtonTapped(_ sender: UIButton) {
 		// bmi 결과값을 뽑아냄
-		self.bmiNumber = calculateBmi(height: heightTextField.text!, weight: weightTextField.text!)
-	}
-	
-	func calculateBmi(height: String, weight: String) -> Double {
-		
-		guard let h = Double(height), let w = Double(weight) else { return 0.0 }
-		var bmi = w / (h * h) * 10000
-		// 소수점 버린뒤 반올림
-		bmi = round(bmi * 10) / 10
-		return bmi
-		
-	}
-	
-	func getBackgroundColor() -> UIColor {
-		guard let bmi = bmiNumber else { return .black }
-		
-		switch bmi {
-		case ..<18.6:
-			return UIColor(red: 22/255, green: 231/255, blue: 207/255, alpha: 1)
-		case 18.6..<23.0:
-			return UIColor(red: 212/255, green: 251/255, blue: 121/255, alpha: 1)
-		case 23.0..<25.0:
-			return UIColor(red: 218/255, green: 127/255, blue: 163/255, alpha: 1)
-		case 25.0..<30.0:
-			return UIColor(red: 255/255, green: 150/255, blue: 141/255, alpha: 1)
-		case 30.0...:
-			return UIColor(red: 255/255, green: 100/255, blue: 78/255, alpha: 1)
-		default:
-			return .black
-		}
-	}
-	
-	func getBmiAdviceString() -> String {
-		guard let bmi = bmiNumber else { return "" }
-		
-		switch bmi {
-		case ..<18.6:
-			return "저체중"
-		case 18.6..<23.0:
-			return "표준"
-		case 23.0..<25.0:
-			return "과체중"
-		case 25.0..<30.0:
-			return "중도비만"
-		case 30.0...:
-			return "고도비만"
-		default:
-			return ""
-		}
+		bmiManager.calculateBmi(height: heightTextField.text!, weight: weightTextField.text!)
 	}
 	
 	override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -109,9 +60,9 @@ class ViewController: UIViewController {
 			let secondVC = segue.destination as! SecondViewController
 			
 			// 계산된 결과값을 다음화면으로 전달
-			secondVC.bmiNumber = self.bmiNumber
-			secondVC.backgroundColor = getBackgroundColor()
-			secondVC.bmiAdviceString = getBmiAdviceString()
+			secondVC.bmiNumber = bmiManager.getBmiResult()
+			secondVC.backgroundColor = bmiManager.getBackgroundColor()
+			secondVC.bmiAdviceString = bmiManager.getBmiAdviceString()
 		}
 		
 		// 다음화면으로 가기전에 텍스트필드 비우기
