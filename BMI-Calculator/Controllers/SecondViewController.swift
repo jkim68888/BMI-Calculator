@@ -13,13 +13,12 @@ class SecondViewController: UIViewController {
 	@IBOutlet weak var adviceLabel: UILabel!
 	@IBOutlet weak var backButton: UIButton!
 	
-	var bmiNumber: Double?
-	var backgroundColor: UIColor?
-	var bmiAdviceString: String?
+	var bmi: Bmi?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		setUI()
+		setData()
     }
     
 	func setUI() {
@@ -29,12 +28,15 @@ class SecondViewController: UIViewController {
 		
 		backButton.clipsToBounds = true
 		backButton.layer.cornerRadius = 5
-		
-		guard let bmiNumber = bmiNumber else { return }
-		bmiNumberLabel.text = String(bmiNumber)
-		
-		bmiNumberLabel.backgroundColor = self.backgroundColor
-		adviceLabel.text = self.bmiAdviceString
+	}
+	
+	func setData() {
+		if let bmi = bmi {
+			bmiNumberLabel.text = "\(bmi.value)"
+			
+			bmiNumberLabel.backgroundColor = bmi.matchColor
+			adviceLabel.text = bmi.advice
+		}
 	}
 	
 	@IBAction func backButtonTapped(_ sender: UIButton) {

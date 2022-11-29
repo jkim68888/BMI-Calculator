@@ -36,8 +36,7 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func calculateButtonTapped(_ sender: UIButton) {
-		// bmi 결과값을 뽑아냄
-		bmiManager.calculateBmi(height: heightTextField.text!, weight: weightTextField.text!)
+		// button을 누르면 세그웨이 함수를 자동으로 실행시킴
 	}
 	
 	override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -60,9 +59,7 @@ class ViewController: UIViewController {
 			let secondVC = segue.destination as! SecondViewController
 			
 			// 계산된 결과값을 다음화면으로 전달
-			secondVC.bmiNumber = bmiManager.getBmiResult()
-			secondVC.backgroundColor = bmiManager.getBackgroundColor()
-			secondVC.bmiAdviceString = bmiManager.getBmiAdviceString()
+			secondVC.bmi = bmiManager.getBmiResult(height: heightTextField.text!, weight: weightTextField.text!)
 		}
 		
 		// 다음화면으로 가기전에 텍스트필드 비우기
